@@ -36,3 +36,10 @@ popd
 %files -f FILE_LIST
 %defattr(-,root,root)
 %doc LICENSE NOTES README.rst build/docs/html
+
+
+%changelog
+* Mon Dec 19 2011 Lev Givon <lev@mandriva.org> 0.5.2-1mdv2011.0
++ Revision: 743781
+- imported package python-django-mptt
+
