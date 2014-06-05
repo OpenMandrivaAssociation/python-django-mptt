@@ -1,17 +1,14 @@
 %define	module	django-mptt
-%define name	python-%{module}
-%define version	0.5.2
-%define release %mkrel 1
 
 Summary:	Modified Preorder Tree Traversal for Django models
-Name:		%{name}
-Version:	%{version}
-Release:	%{release}
-Source0:	http://pypi.python.org/packages/source/d/%{module}/%{module}-%{version}.tar.gz
+
+Name:		python-%{module}
+Version:	0.6.1
+Release:	1
+Source0:	http://pypi.python.org/packages/source/d/django-mptt/django-mptt-%{version}.tar.gz
 License:	BSD
 Group:		Development/Python
 Url:		http://pypi.python.org/pypi/django-mptt/
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildArch:	noarch
 Requires:	python-django
 BuildRequires:	python-sphinx
@@ -24,22 +21,15 @@ Django Models and working with trees of Model instances.
 %setup -q -n %{module}-%{version}
 
 %install
-%__rm -rf %{buildroot}
 PYTHONDONTWRITEBYTECODE= %__python setup.py install --root=%{buildroot} --record=FILE_LIST
 pushd docs
 make html
 popd
 
 %clean
-%__rm -rf %{buildroot}
 
 %files -f FILE_LIST
-%defattr(-,root,root)
 %doc LICENSE NOTES README.rst build/docs/html
 
 
-%changelog
-* Mon Dec 19 2011 Lev Givon <lev@mandriva.org> 0.5.2-1mdv2011.0
-+ Revision: 743781
-- imported package python-django-mptt
 
