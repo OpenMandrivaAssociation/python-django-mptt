@@ -1,2 +1,5 @@
+removed_sources:
+  django-mptt-0.5.2.tar.gz: a9f9ff7e8a7ea8a908f431af823ff8121e9b4474
+  django-mptt-0.6.0.tar.gz: 157573997e53cac6aca71d8b0a386b200d4635df
 sources:
-  "django-mptt-0.5.2.tar.gz": a9f9ff7e8a7ea8a908f431af823ff8121e9b4474
+  django-mptt-0.6.1.tar.gz: 7770310393af36bd3d0c6d998e89a5a26e1317e2

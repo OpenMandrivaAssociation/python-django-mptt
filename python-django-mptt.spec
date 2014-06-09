@@ -1,45 +1,67 @@
-%define	module	django-mptt
-%define name	python-%{module}
-%define version	0.5.2
-%define release %mkrel 1
+%define	oname	django-mptt
 
+Name:		python-%{oname}
+Version:	0.6.1
+Release:	1
 Summary:	Modified Preorder Tree Traversal for Django models
-Name:		%{name}
-Version:	%{version}
-Release:	%{release}
-Source0:	http://pypi.python.org/packages/source/d/%{module}/%{module}-%{version}.tar.gz
-License:	BSD
+
+Source0:	http://pypi.python.org/packages/source/d/django-mptt/django-mptt-%{version}.tar.gz
+
+License:	BSD 
 Group:		Development/Python
-Url:		http://pypi.python.org/pypi/django-mptt/
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
+Url:		http://github.com/django-mptt/django-mptt
 BuildArch:	noarch
-Requires:	python-django
-BuildRequires:	python-sphinx
+
+BuildRequires:	pythonegg(setuptools)
+BuildRequires:	pythonegg(sphinx)
+BuildRequires:  pythonegg(django) >= 1.4.2
+
+Requires: python(abi) = 2.7 
+Requires: pythonegg(django) >= 1.4.2
 
 %description
-Utilities for implementing Modified Preorder Tree Traversal with your
-Django Models and working with trees of Model instances.
+Utilities for implementing Modified Preorder Tree Traversal
+with your Django Models and working with trees of Model instances.
 
 %prep
-%setup -q -n %{module}-%{version}
+%setup -q -n %{oname}-%{version}
 
 %install
-%__rm -rf %{buildroot}
-PYTHONDONTWRITEBYTECODE= %__python setup.py install --root=%{buildroot} --record=FILE_LIST
-pushd docs
-make html
-popd
+python setup.py install --root="%{buildroot}"
 
-%clean
-%__rm -rf %{buildroot}
+%check
+cd tests
+sh runtests.sh
 
-%files -f FILE_LIST
-%defattr(-,root,root)
-%doc LICENSE NOTES README.rst build/docs/html
+%files
+%doc LICENSE MANIFEST.in PKG-INFO README.rst
+%{py_puresitedir}/django_mptt-%{version}-py2.*.egg-info
+%{py_puresitedir}/mptt/__init__.py
+%{py_puresitedir}/mptt/admin.py
+%{py_puresitedir}/mptt/exceptions.py
+%{py_puresitedir}/mptt/fields.py
+%{py_puresitedir}/mptt/forms.py
+
+%lang(de) %{py_puresitedir}/mptt/locale/de/LC_MESSAGES/django.mo
+%{py_puresitedir}/mptt/locale/de/LC_MESSAGES/django.po
+%lang(dk) %{py_puresitedir}/mptt/locale/dk/LC_MESSAGES/django.mo
+%{py_puresitedir}/mptt/locale/dk/LC_MESSAGES/django.po
+%lang(fr) %{py_puresitedir}/mptt/locale/fr/LC_MESSAGES/django.mo
+%{py_puresitedir}/mptt/locale/fr/LC_MESSAGES/django.po
+%lang(nb) %{py_puresitedir}/mptt/locale/nb/LC_MESSAGES/django.mo
+%{py_puresitedir}/mptt/locale/nb/LC_MESSAGES/django.po
+%lang(pl) %{py_puresitedir}/mptt/locale/pl/LC_MESSAGES/django.mo
+%{py_puresitedir}/mptt/locale/pl/LC_MESSAGES/django.po
+%{py_puresitedir}/mptt/managers.py
+%{py_puresitedir}/mptt/models.py
+%{py_puresitedir}/mptt/templates/admin/grappelli_mptt_change_list.html
+%{py_puresitedir}/mptt/templates/admin/grappelli_mptt_change_list_results.html
+%{py_puresitedir}/mptt/templates/admin/mptt_change_list.html
+%{py_puresitedir}/mptt/templates/admin/mptt_change_list_results.html
+%{py_puresitedir}/mptt/templatetags/__init__.py
+%{py_puresitedir}/mptt/templatetags/mptt_admin.py
+%{py_puresitedir}/mptt/templatetags/mptt_tags.py
+%{py_puresitedir}/mptt/utils.py
 
 
-%changelog
-* Mon Dec 19 2011 Lev Givon <lev@mandriva.org> 0.5.2-1mdv2011.0
-+ Revision: 743781
-- imported package python-django-mptt
 
