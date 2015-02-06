@@ -2,7 +2,7 @@
 
 Name:		python-%{oname}
 Version:	0.6.1
-Release:	1
+Release:	2
 Summary:	Modified Preorder Tree Traversal for Django models
 
 Source0:	http://pypi.python.org/packages/source/d/django-mptt/django-mptt-%{version}.tar.gz
