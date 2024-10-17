@@ -9,7 +9,7 @@ Source0:	http://pypi.python.org/packages/source/d/django-mptt/django-mptt-%{vers
 
 License:	BSD 
 Group:		Development/Python
-Url:		http://github.com/django-mptt/django-mptt
+Url:		https://github.com/django-mptt/django-mptt
 BuildArch:	noarch
 
 BuildRequires:	pythonegg(setuptools)
